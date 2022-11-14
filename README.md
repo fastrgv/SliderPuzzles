@@ -362,4 +362,9 @@ It is my intention to use media with copyrights or licenses that are compatible 
 **ver 2.3.7 -- 18oct21**
 * Eliminated anomalous clutter in nexus selection app;
 
+Videos:
+	.) 9-slider  https://youtu.be/A79Wd8wcRVc (9-slider)
+	.) traffic-rush  https://youtu.be/fgDxB1kZPto (traffic-rush)
+
+
 
