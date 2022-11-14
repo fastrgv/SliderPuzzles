@@ -31,7 +31,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.4/puz15nov22.7z
 ===============================================================
 ## Introduction
 
-SliderPuzzles is a collection of retro puzzles with sound that run in a commandline terminal on Windows, OS-X and most Linux distros.
+SliderPuzzles is a collection of retro ASCII puzzles with sound that run in a commandline terminal on Windows, OS-X and most Linux distros.
 
 -----------------------------------------------------------
 Featuring
