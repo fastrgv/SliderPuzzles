@@ -19,6 +19,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.4/puz15nov22.7z
 **ver 2.5.4 -- 15nov2022**
 
 * Regrouped these slider puzzles together just for retro-puzzle fans.
+* Fixed autosolvers for c7, caz.
 
 
 **ver 2.5.3 -- 05nov2022**
