@@ -16,6 +16,12 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.4/asl16nov22.7z
 
 ## What's new:
 
+**ver 2.5.5 -- 07dec2022**
+
+* Further improvements in autosolvers for c7 & caz.
+* Improved sokoban (csok).
+
+
 **ver 2.5.4 -- 15nov2022**
 
 * Regrouped these slider puzzles together just for retro-puzzle fans.
