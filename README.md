@@ -11,10 +11,19 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.5/asl_7dec22.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
 ## What's new:
+
+
+**ver 2.5.6 -- 24sep23**
+
+* Improved TrafficRush (crush) with exit animation & sound.
+* Added 5 more Annoying Sliders that are seriously difficult.
+
+
 
 **ver 2.5.5 -- 07dec2022**
 
@@ -22,27 +31,15 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.5/asl_7dec22.7z
 * Improved sokoban (csok).
 
 
-**ver 2.5.4 -- 15nov2022**
-
-* Regrouped these slider puzzles together just for retro-puzzle fans.
-* Fixed autosolvers for c7, caz.
-
-
-**ver 2.5.3 -- 05nov2022**
-* Created & enabled embedded "live" solvers for the annoying-sliders and panama apps.
-* Improved robustness of all embedded solvers.
-* Improved feedback messages in puzzles.
-* Fixed a serious error in the sliding block puzzles that caused flickering on Windows.
-
-
 ===============================================================
 ## Introduction
 
-SliderPuzzles is a collection of retro ASCII puzzles with sound that run in a commandline terminal on Windows, OS-X and most Linux distros.
+SliderPuzzles is a collection of retro puzzles with sound that runs in a commandline terminal on Windows and most any Linux distro.
 
 -----------------------------------------------------------
 Featuring
 
+	* live solvers promote learning with less frustration
 	* no installation
 	* no dependencies (Ncurses not needed)
 	* simply unzip in your Downloads directory, or any other writeable directory, and run;
@@ -55,13 +52,11 @@ The 7zip command to extract the archive and maintain the directory structure is 
 
 * Windows versions use runtime-priority control for arcade-level response.
 
-Rebuildable using the free GNU Ada compiler, even on OSX.
+Rebuildable using the free GNU Ada compiler.
 
 Includes 12 puzzle games that use ascii characters only:  rush-hour, klotski, flat7, flatAZ, sokoban, hole-in-one, hole-in-one+4, nine, dirty-dozen, panama, annoying-sliders.
 
 See the image "./puzzles.png" for a visual of some of the available puzzzles.
-
-* Two of these puzzles, Flat7 & FlatAZ, are my own creations. They are 2-dimensional versions of my 3D, OpenGL "Rufas Cube" puzzles, available at:  https://sourceforge.net/projects/rufascube/
 
 Usable keys for all:
 
@@ -86,9 +81,11 @@ Use the keyboard arrow keys to highlight the desired game, then press the (enter
 
 * Similarly, linux users cannot use wine to run Windows executables, with this particular App.
 
-* Many of these 2D slider puzzles are also available in OpenGL-graphical form at: https://sourceforge.net/projects/rufasslider/
+If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the command with "padsp".
 
-* Also using OpenGL graphics, I have created some 3D slider puzzles that run on Windows, OS-X, and Linux. It is available at: https://sourceforge.net/projects/reliquarium/
+EG:  "padsp (ExeName)"
+
+
 
 
 ### For Maximal Enjoyment...
@@ -122,7 +119,8 @@ Colored blocks of letters can be moved horizontally or vertically wherever there
 
 A stand alone autosolver, bfsa, is provided, but now, a "live" autosolver is embedded into these games.  At any time you may press the (=)-key to begin stepping toward a solution.
 
-In cann you must type "0" to restart it, since "r" is reserved to mean "red".
+In cann (AnnoyingSliders) you must type "0" to restart it, since "r" is reserved to mean "red".
+Also, an UpperCase letter now helps distinguish a 1x1 block, when it is not otherwise obvious.
 
 For those times when a solution seems impossible, the more difficult puzzle families have an AutoSolver function using the (=)-key to step closer towards the solution:  crush, cslid, cdd, and cann.  
 
@@ -136,10 +134,10 @@ Remember that you can **stop** using the autosolvers at any time and try to manu
 
 First, one selects a vehicle or block by typing its identifier letter.  Then use the arrow keys to move it.  Note that **manual selection is, often times, not necessary,** as there is an auto-select mechanism for those times when only one selection may move in a given direction. For example, cpana never needs a selection (and, btw, it can be solved in 26 moves!).
 
-Be aware that move counts for a given puzzle may differ according to how they are counted. Many puzzzlers count a compound move with a single piece as one move. Here, it is not.
+Be aware that move counts for a given puzzle may differ according to how they are counted. Many puzzlers count a compound move with a single piece as one move. Here, no.
 
 ===============================================================
-### Seven, A2Z (c7.adb, caz.adb)
+### flat7, flatAZ (c7.adb, caz.adb)
 
 c7 (flat7) is a flat representation of a 3D 2x2x2 cube with one cubelet missing that allows sliding permutations.  There are two 2x2 layers. Here, the elements are labelled 1..7.
 
@@ -168,6 +166,14 @@ the KEY MAPPING follows:
 * (-),(+): move up one layer, down one layer
 * (?): help
 * (q): quit
+* (=): AutoSolve
+
+
+#### AutoSolvers Note
+
+One of the slowest is in caz(FlatAZ), which can take up to 10 seconds to find the solution to a level 5 shuffle. When it has finished, it will display the remaining steps as you continue to press the equal-key (=).
+
+The c9 solver is also very slow. It can take over 15 seconds.
 
 
 
@@ -185,11 +191,11 @@ There are many cases the first two solvers cannot handle, but they are pretty go
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
 
 
-### HoleInOne (chio.adb, chio4.adb)
+### HoleInOne/HoleInOne+4 (chio.adb/chio4.adb)
 Move the red 2x2 'a' block into the center of the four L-shaped corner pieces.
 
 ### Nine (c9.adb)
-Reverse the order of the numbered blocks with assorted shapes. First version begins with blocks in order. Second begins with blocks in reverse order. Has solver.
+Reverse the order of the numbered blocks with assorted shapes. First version begins with blocks in order. Second begins with blocks in reverse order. Has **very slow** solver.
 
 ===============================================================
 ## Setup & Running:
@@ -197,7 +203,6 @@ Reverse the order of the numbered blocks with assorted shapes. First version beg
 SliderPuzzles is a stand-alone application.
 Ncurses is NOT needed; there are no prerequisites.
 
-Mac users see "osx-setup.txt".
 Windows users see "windows-setup.txt".
 
 Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
@@ -219,19 +224,21 @@ To launch the puzzle selector App, depending on your system, type:
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
 
 
+If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the "padsp" command:
+
+"padsp (exe-name)"
+
 
 
 
 ===========================================================================
 ## Compiler Scripts
-There are 3 scripts, winbuildall.bat for Windows, lbuildall.sh for Linux, and obuildall.sh for OS-X.  They differ in where the executables are put.  With so many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
+There are 2 scripts, winbuildall.bat for Windows & lbuildall.sh for Linux.  They differ in where the executables are put.  With many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
 
 These build scripts work for GNU Ada [with its own g++].
 See ./alternateBuildScripts/ for more examples.
 
 The latest scripts have elliminated the need to use the "gnatcoll" library simply by compiling from source 3 additional tiny files, a small subset of gnatcoll, that are actually used.
-
-Final note:  the latest OSX script does not use Xcode, only GNU Ada & GNU g++.
 
 ==========================================================================
 ## Build Instructions:
@@ -243,13 +250,13 @@ To get a recent Ada compiler;  eg. GNU-Ada...try this source:
 https://github.com/alire-project/GNAT-FSF-builds/releases
 
 
-Manually install GNU Ada.  If you don't like my key-mappings, edit the code as you like.
+Manually install GNU Ada.  You can tweak the default key-mappings by editting the code as you like.
 
 Next, edit the scripts wincmp.bat, lcmp.sh or ocmp.sh so that the path to gnatmake is correct.  These scripts streamline the build process by allowing auxilliary files to be neatly hidden in subdirectories.
 
 Windows users please read gnuAdaOnWindows.txt.
 
-Then type "[win/l/o]buildall" to create new command-line executables for your system. ( win for Windows, l for Linux, o for OSX). 
+Then type "[win/l]buildall" to create new command-line executables for your system. ( win for Windows, l for Linux). 
 
 There are NO other 3rd party libraries or tools required to build.
 
@@ -261,7 +268,7 @@ There are NO other 3rd party libraries or tools required to build.
 ## What is special about this project?...freedom...portability
 
 * uses the Ada programming language and the freely-available GNU compiler.
-* runs on  PCs running Windows or Linux;
+* runs on PCs running Windows or Linux;
 * uses only free open source software [F.O.S.S] tools & libraries;
 * portable, transparent code, easy to modify, rebuild;
 * uses a cross-platform implementation of OpenAL-Audio, adaptable by any Ada application that needs sounds & music-loops with a simple interface.
@@ -273,6 +280,15 @@ Developer or not, send comments, suggestions or questions to:
 fastrgv@gmail.com
 
 
+## Some of my other puzzle apps.
+
+* Two of these puzzles, Flat7 & FlatAZ, are my own creations. They are 2-dimensional versions of my 3D, OpenGL "Rufas Cube" puzzles, available at:  https://sourceforge.net/projects/rufascube/
+
+* Many of these 2D slider puzzles are also available in OpenGL-graphical form at: https://sourceforge.net/projects/rufasslider/
+
+* Also using OpenGL graphics, I have created some 3D slider puzzles that run on Windows and Linux. It is available at: https://sourceforge.net/projects/reliquarium/
+
+
 ---------------------------------------------------------------
 
 
@@ -280,7 +296,7 @@ fastrgv@gmail.com
 
 SliderPuzzles is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2022  <fastrgv@gmail.com>
+ Copyright (C) 2023  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -300,7 +316,7 @@ SliderPuzzles is covered by the GNU GPL v3 as indicated in the sources:
 ## Other Credits and Thanks:
 Serhiy Grabarchuk and Peter Grabarchuk for their "Hole in One", "Hole in One plus 4", and "Nine" puzzles.
 
-Nick Baxter, J.H.Conway, Jim Lewis, Bob Henderson, Gil Dogon, Ed Pegg Jr., J.I. Wiley, J.H. Fleming, C. L. Diamond, Sam Loyd, H. E. Dudeney, E. B. Escott, Nob Yoshigahara, James W. Stephens for the classic sliders.
+Nick Baxter, J.H.Conway, Jim Lewis, Bob Henderson, Gil Dogon, Ed Pegg Jr., J.I. Wiley, J.H. Fleming, C. L. Diamond, Sam Loyd, H. E. Dudeney, E. B. Escott, Nob Yoshigahara, James W. Stephens, & Neil Bickford for the classic sliders.
 
 
 ----------------------------------------------
@@ -331,6 +347,16 @@ It is my intention to use media with copyrights or licenses that are compatible 
 --------------------------------------------------
 ## Some Earlier Revision History:
 
+**ver 2.5.4 -- 15nov2022**
+* Regrouped these slider puzzles together just for retro-puzzle fans.
+* Greatly improved autosolvers for c7, caz.
+
+**ver 2.5.3 -- 05nov2022**
+* Created & enabled embedded "live" solvers for the annoying-sliders and panama apps.
+* Improved robustness of all embedded solvers.
+* Improved feedback messages in puzzles.
+* Fixed a serious error in the sliding block puzzles that caused flickering on Windows.
+
 **ver 2.5.2 -- 22oct2022**
 * Added 16 annoying block sliders that are small, yet quite challenging.
 * Improved traffic-rush by presenting puzzles in order, from easy to hard;
@@ -350,17 +376,8 @@ It is my intention to use media with copyrights or licenses that are compatible 
 * Removed Win64 build.
 * Now using GNU Ada rather than defunct AdaCore compiler.
 
-**ver 2.4.0 -- 23dec21**
-* Updated gnatcoll libraries on OSX & w32; removed unused libgpr.a.
-* All "assets", including datafiles & soundfiles, now have licenses compatible with the GPLv3 license.
 
-**ver 2.3.9 -- 05nov21**
-* Added example script to build using Gnu/Gnat.
-* Refined libraries and build scripts.
-* Replaced libgnatcoll.a with one from GitHub.
 
-**ver 2.3.8 -- 21oct21**
-* Besides Win64, there is now a Win32 build, to support older platforms.
 * Improved adaOpenAL binding code.
 
 **ver 2.3.7 -- 18oct21**
