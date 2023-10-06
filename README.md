@@ -12,10 +12,17 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.6/asl24sep23.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
 ## What's new:
+
+
+
+**ver 2.5.7 -- 06oct23**
+
+* Restored OSX build for the command line (without a bundle) .
 
 
 **ver 2.5.6 -- 24sep23**
@@ -34,7 +41,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.6/asl24sep23.7z
 ===============================================================
 ## Introduction
 
-SliderPuzzles is a collection of retro puzzles with sound that runs in a commandline terminal on Windows and most any Linux distro.
+SliderPuzzles is a collection of retro puzzles with sound that runs in a commandline terminal on Windows, OSX, and most any Linux distro.
 
 -----------------------------------------------------------
 Featuring
@@ -91,7 +98,7 @@ EG:  "padsp (ExeName)"
 ### For Maximal Enjoyment...
 Keyboard setup can be very important for playability.  You should have a very short key-delay and fast repeat rate setting when running the arcade games. The normal settings are fine for puzzles.
 
-Screen setup is important, too. Terminal sizes required:
+Screen setup is important, too. **Terminal size required:**
 
 	* 60x25
 
@@ -186,6 +193,8 @@ Move the pusher ( <> or @ ) with the arrow keys in order to push all the boxes (
 
 Three [external] sokoban solvers named iplr3r, ibox3r, & hbox4  are available.  The command line is "solver-name puzzle-file-name level-number-to-solve".  The solvers print solution-strings to the terminal screen.
 
+Be aware that sokoban puzzles are very much more difficult to solve than all the others, so many are not solvable by the embedded solvers, even without a time limit.
+
 There are many cases the first two solvers cannot handle, but they are pretty good at solving smaller puzzles, particularly the more dense ones. Hbox4 is the most capable.
 
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
@@ -203,10 +212,17 @@ Reverse the order of the numbered blocks with assorted shapes. First version beg
 SliderPuzzles is a stand-alone application.
 Ncurses is NOT needed; there are no prerequisites.
 
+Mac/OSX users see "osx-setup.txt".
+
 Windows users see "windows-setup.txt".
 
-Unzip the archive.  On Windows, 7z [www.7-zip.org] works well for this.
-The proper command to extract the archive and maintain the directory structure is "7z x filename".
+Unzip the archive.  
+
+* On Linux & Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
+
+* On OSX, the command-line for Keka works thusly:
+	* /Applications/Keka.app/Contents/MacOS/Keka --cli 7z x (filename.7z)
+
 
 Open a commandline terminal, and cd to the game directory.
 
@@ -219,6 +235,7 @@ Then enlarge the Font so that the window fills your monitor.
 To launch the puzzle selector App, depending on your system, type:
 
 * winSlide.bat (win64)
+* macSlide.sh (OSX)
 * gnuSlide.sh (linux)
 
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
@@ -233,7 +250,7 @@ If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the 
 
 ===========================================================================
 ## Compiler Scripts
-There are 2 scripts, winbuildall.bat for Windows & lbuildall.sh for Linux.  They differ in where the executables are put.  With many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
+There are 3 scripts included.  They differ in where the executables are put.  With many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
 
 These build scripts work for GNU Ada [with its own g++].
 See ./alternateBuildScripts/ for more examples.
@@ -256,7 +273,7 @@ Next, edit the scripts wincmp.bat, lcmp.sh or ocmp.sh so that the path to gnatma
 
 Windows users please read gnuAdaOnWindows.txt.
 
-Then type "[win/l]buildall" to create new command-line executables for your system. ( win for Windows, l for Linux). 
+Then type "[win/l/o]buildall" to create new command-line executables for your system. ( win for Windows, l for Linux, o for OSX). 
 
 There are NO other 3rd party libraries or tools required to build.
 
@@ -268,7 +285,7 @@ There are NO other 3rd party libraries or tools required to build.
 ## What is special about this project?...freedom...portability
 
 * uses the Ada programming language and the freely-available GNU compiler.
-* runs on PCs running Windows or Linux;
+* runs on PCs running Windows, OSX or Linux;
 * uses only free open source software [F.O.S.S] tools & libraries;
 * portable, transparent code, easy to modify, rebuild;
 * uses a cross-platform implementation of OpenAL-Audio, adaptable by any Ada application that needs sounds & music-loops with a simple interface.
@@ -286,7 +303,7 @@ fastrgv@gmail.com
 
 * Many of these 2D slider puzzles are also available in OpenGL-graphical form at: https://sourceforge.net/projects/rufasslider/
 
-* Also using OpenGL graphics, I have created some 3D slider puzzles that run on Windows and Linux. It is available at: https://sourceforge.net/projects/reliquarium/
+* Also using OpenGL graphics, I have created some 3D slider puzzles that run on Windows, OSX, and Linux. It is available at: https://sourceforge.net/projects/reliquarium/
 
 
 ---------------------------------------------------------------
@@ -375,17 +392,5 @@ It is my intention to use media with copyrights or licenses that are compatible 
 **ver 2.4.1 -- 16sep22**
 * Removed Win64 build.
 * Now using GNU Ada rather than defunct AdaCore compiler.
-
-
-
-* Improved adaOpenAL binding code.
-
-**ver 2.3.7 -- 18oct21**
-* Eliminated anomalous clutter in nexus selection app;
-
-Videos:
-	.) https://youtu.be/A79Wd8wcRVc (9-slider)
-	.) https://youtu.be/fgDxB1kZPto (traffic-rush)
-
 
 
