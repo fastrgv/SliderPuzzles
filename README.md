@@ -25,6 +25,10 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/2.5.7/asl6oct23.7z
 ## What's new:
 
 
+**ver 2.5.8 -- 13oct23**
+
+* Added warning if window is too small.
+
 
 **ver 2.5.7 -- 06oct23**
 
