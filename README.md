@@ -24,6 +24,11 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.8/asl13oct23.7z
 
 ## What's new:
 
+**ver 2.5.9 -- 6nov23**
+
+* Improved/generalized OSX build scripts.
+* Repaired TrafficRush [crush] autosolver problem.
+
 
 **ver 2.5.8 -- 13oct23**
 
