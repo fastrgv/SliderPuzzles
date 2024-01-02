@@ -19,38 +19,17 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.5.9/asl6nov23.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
 ## What's new:
 
-**ver 2.5.9 -- 6nov23**
 
-* Improved/generalized OSX build scripts.
-* Repaired TrafficRush [crush] autosolver problem.
+**ver 2.6.0 --4jan2024**
 
-
-**ver 2.5.8 -- 13oct23**
-
-* Added warning if window is too small.
-
-
-**ver 2.5.7 -- 06oct23**
-
-* Restored OSX build for the command line (without a bundle) .
-
-
-**ver 2.5.6 -- 24sep23**
-
-* Improved TrafficRush (crush) with exit animation & sound.
-* Added 5 more Annoying Sliders that are seriously difficult.
-
-
-
-**ver 2.5.5 -- 07dec2022**
-
-* Further improvements in autosolvers for c7 & caz.
-* Improved sokoban (csok).
+* Fixed some errors; improved sokoban solvers, external and embedded (csok).
+* Repaired csok single-file-mode [user given file+MxLev+Lev].
 
 
 ===============================================================
@@ -113,11 +92,13 @@ EG:  "padsp (ExeName)"
 ### For Maximal Enjoyment...
 Keyboard setup can be very important for playability.  You should have a very short key-delay and fast repeat rate setting when running the arcade games. The normal settings are fine for puzzles.
 
-Screen setup is important, too. **Terminal size required:**
+Screen setup is important, too...
+
+**Terminal size required:**
 
 	* 60x25
 
-It is recommended to resize your terminal window, per the above table; then enlarge the font until the window just barely fits your computer screen.
+It is recommended to resize your terminal window; then enlarge the font until the window just barely fits your computer screen.
 
 ===========================================================================
 
@@ -176,15 +157,14 @@ Both the "caz" and "c7" puzzles work the same:
 
 A character in an adjacent row, column, or layer may be moved to the empty space using the keyboard.
 
-Pressing the (home) key on a typical keyboard produces the character 'H'.  So assuming that (home)=>'H', (end)=>'F', (up)=>'A', etc...
-the KEY MAPPING follows:
+The KEY MAPPING follows:
 
 * (1)..(5): mix;  higher values are more difficult.
 * (up),(lf),(dn),(rt): move north, west, south, east
 * (i),(j),(k),(l): move north, west, south, east
 * (w),(a),(s),(d): move north, west, south, east
 * (home),(end): move up one layer, down one layer
-* (\\),(/): [backslash=]move up one layer, [forwardslash=]down one layer
+* (backslash),(slash): move up one layer, down one layer
 * (-),(+): move up one layer, down one layer
 * (?): help
 * (q): quit
@@ -214,6 +194,24 @@ There are many cases the first two solvers cannot handle, but they are pretty go
 
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
 
+Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or more valid puzzle positions).
+
+The default method used by embedded solver Hbox4 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+
+#### 6 method options for hbox4:
+
+	* 0 "quickest"
+	* 1 more "efficient"
+	* 2 suppress hungarian estimator (for dense puzzles)
+	* 3 like 0 but tries to reduce total moves
+	* 4 like 1 but tries to reduce total moves [default]
+	* 5 like 2 but tries to reduce total moves
+
+For further details see:
+
+	* https://sourceforge.net/projects/hbox4/
+
+
 
 ### HoleInOne/HoleInOne+4 (chio.adb/chio4.adb)
 Move the red 2x2 'a' block into the center of the four L-shaped corner pieces.
@@ -235,7 +233,7 @@ Unzip the archive.
 
 * On Linux & Windows, 7z [www.7-zip.org] works well for this. The proper command to extract the archive and maintain the directory structure is "7z x filename".
 
-* On OSX, the command-line for Keka works thusly:
+* On OSX, Keka works well for 7Z files. The command-line for Keka is:
 	* /Applications/Keka.app/Contents/MacOS/Keka --cli 7z x (filename.7z)
 
 
@@ -282,7 +280,7 @@ To get a recent Ada compiler;  eg. GNU-Ada...try this source:
 https://github.com/alire-project/GNAT-FSF-builds/releases
 
 
-Manually install GNU Ada.  You can tweak the default key-mappings by editting the code as you like.
+Manually install GNU Ada.  
 
 Next, edit the scripts wincmp.bat, lcmp.sh or ocmp.sh so that the path to gnatmake is correct.  These scripts streamline the build process by allowing auxilliary files to be neatly hidden in subdirectories.
 
@@ -328,7 +326,7 @@ fastrgv@gmail.com
 
 SliderPuzzles is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2023  <fastrgv@gmail.com>
+ Copyright (C) 2024  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -378,6 +376,24 @@ It is my intention to use media with copyrights or licenses that are compatible 
 
 --------------------------------------------------
 ## Some Earlier Revision History:
+
+**ver 2.5.9 -- 6nov23**
+* Improved/generalized OSX build scripts.
+* Repaired TrafficRush [crush] autosolver problem.
+
+**ver 2.5.8 -- 13oct23**
+* Added warning if window is too small.
+
+**ver 2.5.7 -- 06oct23**
+* Restored OSX build for the command line (without a bundle) .
+
+**ver 2.5.6 -- 24sep23**
+* Improved TrafficRush (crush) with exit animation & sound.
+* Added 5 more Annoying Sliders that are seriously difficult.
+
+**ver 2.5.5 -- 07dec2022**
+* Further improvements in autosolvers for c7 & caz.
+* Improved sokoban (csok).
 
 **ver 2.5.4 -- 15nov2022**
 * Regrouped these slider puzzles together just for retro-puzzle fans.
