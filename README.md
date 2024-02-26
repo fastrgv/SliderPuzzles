@@ -25,6 +25,13 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.0/asl3jan24.7z
 
 ## What's new:
 
+**ver 2.6.1 --26feb2024**
+
+* Updated [embedded+external] hbox4 with memory checks.
+* Updated OpenAL sound code.
+* Corrected display logic of annoying sliders goal-dots.
+* Other code improvements.
+
 
 **ver 2.6.0 --4jan2024**
 
