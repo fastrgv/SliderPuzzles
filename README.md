@@ -20,10 +20,21 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.1/as26feb24.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
 ## What's new:
+
+
+**ver 2.6.2 --16dec2024**
+
+* All block sliders (cslid,cann,cdd) now capitalize letters that represent 1x1 blocks.
+* Block sliders cdd, cann & cslid now permit saving/restoring puzzle state using "."/":" keys.
+* Annoying-sliders cannot permit using the ijkl-keys for movement because the k-key is used to select a black colored block.
+* Updated hbox4 to hbox5.
+* Updated embedded hbox5 solver to csok.
+
 
 **ver 2.6.1 --26feb2024**
 
@@ -66,13 +77,6 @@ Includes 12 puzzle games that use ascii characters only:  rush-hour, klotski, fl
 
 See the image "./puzzles.png" for a visual of some of the available puzzzles.
 
-Usable keys for all:
-
-* arrow-keys for movement; (see ~/docs/KeyboardMoves.txt)
-* in some games you can also use wasd, ijkl for moves.
-* (q)=quit
-* (?)=help toggle
-
 All puzzles can be called directly from the command line; e.g.
 
 * bin\win\csok.exe	(sokoban from base dir)
@@ -82,6 +86,7 @@ but it is more convenient to use the selector app, thusly:
 
 * winSlide.bat			(Win64)
 * gnuSlide.sh			(linux)
+* macSlide.sh			(OSX)
 
 Use the keyboard arrow keys to highlight the desired game, then press the (enter)-key.
 
@@ -109,6 +114,18 @@ It is recommended to resize your terminal window; then enlarge the font until th
 
 ===========================================================================
 
+### Common KeyMappings
+
+* (up),(lf),(dn),(rt): move north, west, south, east (see ~/docs/KeyboardMoves.txt) 
+* (i),(j),(k),(l): move north, west, south, east
+* (w),(a),(s),(d): move north, west, south, east
+* (?): help
+* (q): quit
+* (=): AutoSolve; step-by-step
+* (+): next puzzle
+* (-): previous puzzle
+* (r): reset
+
 
 
 ### TrafficRush (crush.adb)
@@ -122,15 +139,21 @@ I created about 20% of these rush-puzzles (filenames that end "my.rush"), includ
 
 
 
-### BlockSliders, DirtyDozen, AnnoyingSliders
+### BlockSliders [cslid], DirtyDozen [cdd], AnnoyingSliders [cann]
 Colored, non-graphical Block Slider puzzle games designed to run in a terminal window.
+In these 3, an UpperCase letter helps distinguish a 1x1 block.
 
 Colored blocks of letters can be moved horizontally or vertically wherever there is space.  Often, the objective is to move the red block to a specified goal position. Sometimes the goal is to swap the positions of two blocks.
 
 A stand alone autosolver, bfsa, is provided, but now, a "live" autosolver is embedded into these games.  At any time you may press the (=)-key to begin stepping toward a solution.
 
-In cann (AnnoyingSliders) you must type "0" to restart it, since "r" is reserved to mean "red".
-Also, an UpperCase letter now helps distinguish a 1x1 block, when it is not otherwise obvious.
+In cann (AnnoyingSliders) you must type "0" to restart it, since "r" is reserved to mean "red"; also the ijkl movement keys are disabled since the letter "k" is used for the color black.
+
+Extra key functions for these 3 blocksliders only:  
+
+* (.) save current CFG
+* (/) restore saved CFG
+
 
 For those times when a solution seems impossible, the more difficult puzzle families have an AutoSolver function using the (=)-key to step closer towards the solution:  crush, cslid, cdd, and cann.  
 
@@ -140,7 +163,6 @@ Remember that you can **stop** using the autosolvers at any time and try to manu
 
 ### Gameplay: crush, cslid, cann (annoying-sliders)
 
-"?" toggles the help screen.  The "+" and "-" keys (next, previous) are used to cycle through the large number of predefined puzzles.  You can reset a puzzle by typing "r". You can autosolve by typing "=". 
 
 First, one selects a vehicle or block by typing its identifier letter.  Then use the arrow keys to move it.  Note that **manual selection is, often times, not necessary,** as there is an auto-select mechanism for those times when only one selection may move in a given direction. For example, cpana never needs a selection (and, btw, it can be solved in 26 moves!).
 
@@ -164,7 +186,7 @@ Both the "caz" and "c7" puzzles work the same:
 
 A character in an adjacent row, column, or layer may be moved to the empty space using the keyboard.
 
-The KEY MAPPING follows:
+The KEY MAPPINGS for these 2 puzzles:
 
 * (1)..(5): mix;  higher values are more difficult.
 * (up),(lf),(dn),(rt): move north, west, south, east
@@ -193,19 +215,26 @@ There are now two character sets possible that are toggled with the (c)-key.
 
 Move the pusher ( <> or @ ) with the arrow keys in order to push all the boxes ( [] or $ ) onto the goals ( :: or . ) in which case they look like ( {} or asterisk ).  Various other functions available on the help screen.  Includes a very large family of puzzle files.
 
-Three [external] sokoban solvers named iplr3r, ibox3r, & hbox4  are available.  The command line is "solver-name puzzle-file-name level-number-to-solve".  The solvers print solution-strings to the terminal screen.
+Three [external] sokoban solvers named iplr3r, ibox3r, & hbox5  are available.  The command line is "solver-name puzzle-file-name level-number-to-solve".  The solvers print solution-strings to the terminal screen.
 
 Be aware that sokoban puzzles are very much more difficult to solve than all the others, so many are not solvable by the embedded solvers, even without a time limit.
 
-There are many cases the first two solvers cannot handle, but they are pretty good at solving smaller puzzles, particularly the more dense ones. Hbox4 is the most capable.
+There are many cases the first two solvers cannot handle, but they are pretty good at solving smaller puzzles, particularly the more dense ones. Hbox5 is the most capable.
 
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
 
 Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or more valid puzzle positions).
 
-The default method used by embedded solver Hbox4 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+solver-key summary:
 
-#### 6 method options for hbox4:
+	* (.)		initiate hbox5
+	* (,)		initiate ibox
+	* (=)		initiate iplr
+
+
+The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+
+#### 6 method options for hbox5:
 
 	* 0 "quickest"
 	* 1 more "efficient"
@@ -216,7 +245,7 @@ The default method used by embedded solver Hbox4 [ (.)-key ] can now be reset us
 
 For further details see:
 
-	* https://sourceforge.net/projects/hbox4/
+	* https://sourceforge.net/projects/hbox4/			(4 is not a typo)
 
 
 
@@ -254,16 +283,11 @@ Then enlarge the Font so that the window fills your monitor.
 
 To launch the puzzle selector App, depending on your system, type:
 
-* winSlide.bat (win64)
+* winSlide.bat (win64: win10+win11)
 * macSlide.sh (OSX)
 * gnuSlide.sh (linux)
 
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
-
-
-If an older Linux system complains that /dev/dsp/ cannot be opened, prepend the "padsp" command:
-
-"padsp (exe-name)"
 
 
 
@@ -312,9 +336,11 @@ There are NO other 3rd party libraries or tools required to build.
 * pure minimalism:  no graphics, just colored ASCII characters, keyboard, & sound;
 * Ncurses is <u>not</u> required.
 
+I am short of testers, and would appreciate any feedback...
 Open source Ada developers are welcome to help improve or extend this app.
 Developer or not, send comments, suggestions or questions to:
 fastrgv@gmail.com
+
 
 
 ## Some of my other puzzle apps.
