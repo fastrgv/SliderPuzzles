@@ -21,6 +21,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.2/asl16dec24.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
@@ -230,6 +231,15 @@ solver-key summary:
 	* (.)		initiate hbox5
 	* (,)		initiate ibox
 	* (=)		initiate iplr
+
+
+Finally, a single command-line argument (decimal float) specifies a timeout interval [in seconds] to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  
+
+For example:
+
+	* bin\win\csok.exe 30.0
+
+initiates the Windows version using a 30 second timeout, rather than the default 10.
 
 
 The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
