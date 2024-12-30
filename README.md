@@ -22,10 +22,18 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.2/asl16dec24.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
 ## What's new:
+
+
+
+**ver 2.6.3 --01jan2025**
+
+* Updated embedded solver hbox5 in csok.
+* Added ">","<" keys to adjust csok-solver timeout.
 
 
 **ver 2.6.2 --16dec2024**
@@ -36,19 +44,8 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.2/asl16dec24.7z
 * Updated hbox4 to hbox5.
 * Updated embedded hbox5 solver to csok.
 
+## More change-history at end of file
 
-**ver 2.6.1 --26feb2024**
-
-* Updated [embedded+external] hbox4 with memory checks.
-* Updated OpenAL sound code.
-* Corrected display logic of annoying sliders goal-dots.
-* Other code improvements.
-
-
-**ver 2.6.0 --4jan2024**
-
-* Fixed some errors; improved sokoban solvers, external and embedded (csok).
-* Repaired csok single-file-mode [user given file+MxLev+Lev].
 
 
 ===============================================================
@@ -226,23 +223,9 @@ Three time-limited-to-10-second solvers are embedded into csok.  At any time you
 
 Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or more valid puzzle positions).
 
-solver-key summary:
+The default **timeout** used by embedded solvers is adjustable using the (>)-key or (<)-key to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-	* (.)		initiate hbox5
-	* (,)		initiate ibox
-	* (=)		initiate iplr
-
-
-Finally, a single command-line argument (decimal float) specifies a timeout interval [in seconds] to wait for the internal autosolver before giving up.  The default is 10.0 seconds.  
-
-For example:
-
-	* bin\win\csok.exe 30.0
-
-initiates the Windows version using a 30 second timeout, rather than the default 10.
-
-
-The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+Also, the default **method** used by embedded solver Hbox5 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
 
 #### 6 method options for hbox5:
 
@@ -256,6 +239,19 @@ The default method used by embedded solver Hbox5 [ (.)-key ] can now be reset us
 For further details see:
 
 	* https://sourceforge.net/projects/hbox4/			(4 is not a typo)
+
+
+solver-key summary:
+
+	* (.)		initiate hbox5
+	* (,)		initiate ibox
+	* (=)		initiate iplr
+
+	* (>)		increment timeout by 10 sec
+	* (<)		decrement timeout by 10 sec
+
+	* (0..5)	set default solution method for Hbox5
+
 
 
 
@@ -369,7 +365,7 @@ fastrgv@gmail.com
 
 SliderPuzzles is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2024  <fastrgv@gmail.com>
+ Copyright (C) 2025  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -419,6 +415,16 @@ It is my intention to use media with copyrights or licenses that are compatible 
 
 --------------------------------------------------
 ## Some Earlier Revision History:
+
+**ver 2.6.1 --26feb2024**
+* Updated [embedded+external] hbox4 with memory checks.
+* Updated OpenAL sound code.
+* Corrected display logic of annoying sliders goal-dots.
+* Other code improvements.
+
+**ver 2.6.0 --4jan2024**
+* Fixed some errors; improved sokoban solvers, external and embedded (csok).
+* Repaired csok single-file-mode [user given file+MxLev+Lev].
 
 **ver 2.5.9 -- 6nov23**
 * Improved/generalized OSX build scripts.
