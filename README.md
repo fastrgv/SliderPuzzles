@@ -3,7 +3,7 @@
 
 ### Download all source code, resources & binaries in the following 7-zip file:
 
-https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.3/slpuz1jan25.7z
+https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.4/as3mar25.7z
 
 
 * On OSX, Keka works well for 7Z files. The command-line for Keka is:
