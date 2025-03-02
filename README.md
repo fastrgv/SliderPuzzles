@@ -23,6 +23,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.3/slpuz1jan25.7z
 
 
 
+
 # SliderPuzzles with Sound
 
 
@@ -30,19 +31,15 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.3/slpuz1jan25.7z
 
 
 
+**ver 2.6.4 --3mar2025**
+
+* Updated & improved 3 solvers used within csok;
+
+
 **ver 2.6.3 --01jan2025**
 
-* Updated embedded solver hbox5 in csok.
-* Added ">","<" keys to adjust csok-solver timeout.
-
-
-**ver 2.6.2 --16dec2024**
-
-* All block sliders (cslid,cann,cdd) now capitalize letters that represent 1x1 blocks.
-* Block sliders cdd, cann & cslid now permit saving/restoring puzzle state using "."/":" keys.
-* Annoying-sliders cannot permit using the ijkl-keys for movement because the k-key is used to select a black colored block.
-* Updated hbox4 to hbox5.
-* Updated embedded hbox5 solver to csok.
+* Updated embedded solver hbox in csok.
+* Added ">","<" keys to adjust csok-solver timeout (10-sec increments)
 
 ## More change-history at end of file
 
@@ -213,11 +210,11 @@ There are now two character sets possible that are toggled with the (c)-key.
 
 Move the pusher ( <> or @ ) with the arrow keys in order to push all the boxes ( [] or $ ) onto the goals ( :: or . ) in which case they look like ( {} or asterisk ).  Various other functions available on the help screen.  Includes a very large family of puzzle files.
 
-Three [external] sokoban solvers named iplr3r, ibox3r, & hbox5  are available.  The command line is "solver-name puzzle-file-name level-number-to-solve".  The solvers print solution-strings to the terminal screen.
+Three [external] sokoban solvers named iplr3r, ibox3r, & hbox  are available.  The command line is "solver-name puzzle-file-name level-number-to-solve".  The solvers print solution-strings to the terminal screen.
 
-Be aware that sokoban puzzles are very much more difficult to solve than all the others, so many are not solvable by the embedded solvers, even without a time limit.
+Be aware that sokoban puzzles are very much more difficult to solve than all the others, so many are not solvable, even without a time limit.
 
-There are many cases the first two solvers cannot handle, but they are pretty good at solving smaller puzzles, particularly the more dense ones. Hbox5 is the most capable.
+There are many cases the first two solvers cannot handle, but they are pretty good at solving smaller puzzles, particularly the more dense ones. Hbox is the most capable.
 
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
 
@@ -225,32 +222,37 @@ Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or mor
 
 The default **timeout** used by embedded solvers is adjustable using the (>)-key or (<)-key to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-Also, the default **method** used by embedded solver Hbox5 [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+Also, the default **method** used by embedded solver Hbox [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
 
-#### 6 method options for hbox5:
+#### 10 method options [0..9] for hbox:
 
-	* 0 "quickest"
-	* 1 more "efficient"
-	* 2 suppress hungarian estimator (for dense puzzles)
-	* 3 like 0 but tries to reduce total moves
-	* 4 like 1 but tries to reduce total moves [default]
-	* 5 like 2 but tries to reduce total moves
+* 0 "quickest" using 6 heuristics+inertia
+* 1 "move-efficient" +inertia
+* 2 suppress hungarian estimator (for dense puzzles)
+* 3 like 0 but single-step
+* 4 like 0 but using only 5-heuristics
+
+* 5 like 0 but using 1-heuristic (meth10)
+* 6 like 1 but using 1-heuristic (meth11)
+* 7 like 2 but using 1-heuristic (meth12)
+* 8 like 3 but using 1-heuristic (meth13)
+* 9 like 4 but using 1-heuristic (meth14)
 
 For further details see:
 
-	* https://sourceforge.net/projects/hbox4/			(4 is not a typo)
+* https://sourceforge.net/projects/hbox4/			(4 is not a typo)
 
 
 solver-key summary:
 
-	* (.)		initiate hbox5
-	* (,)		initiate ibox
-	* (=)		initiate iplr
+* (.)		initiate hbox
+* (,)		initiate ibox
+* (=)		initiate iplr
 
-	* (>)		increment timeout by 10 sec
-	* (<)		decrement timeout by 10 sec
+* (>)		increment timeout by 10 sec
+* (<)		decrement timeout by 10 sec
 
-	* (0..5)	set default solution method for Hbox5
+* (0..9)	set default solution method for Hbox
 
 
 
@@ -269,7 +271,7 @@ Ncurses is NOT needed; there are no prerequisites.
 
 Mac/OSX users see "osx-setup.txt".
 
-Windows users see "windows-setup.txt".
+Windows users see "windows-setup.txt". Works on both Win10 & Win11.
 
 Unzip the archive.  
 
@@ -291,19 +293,17 @@ To launch the puzzle selector App, depending on your system, type:
 
 * winSlide.bat (win64: win10+win11)
 * macSlide.sh (OSX)
-* gnuSlide.sh (linux)
+* gnuSlide.sh (linux)  [ ognuSlide.sh works on old linux versions ]
 
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
 
 
 
-
 ===========================================================================
 ## Compiler Scripts
-There are 3 scripts included.  They differ in where the executables are put.  With many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
+There are 3 sets of scripts included.  They differ in where the executables are put.  With many different precompiled binaries for each OS, there would be too much clutter if they were all put into the same place, particularly since windows needs colocated DLLs.
 
 These build scripts work for GNU Ada [with its own g++].
-See ./alternateBuildScripts/ for more examples.
 
 The latest scripts have elliminated the need to use the "gnatcoll" library simply by compiling from source 3 additional tiny files, a small subset of gnatcoll, that are actually used.
 
@@ -323,7 +323,9 @@ Next, edit the scripts wincmp.bat, lcmp.sh or ocmp.sh so that the path to gnatma
 
 Windows users please read gnuAdaOnWindows.txt.
 
-Then type "[win/l/o]buildall" to create new command-line executables for your system. ( win for Windows, l for Linux, o for OSX). 
+* winbuildall.bat (Windows)
+* obuildall.sh (OSX)
+* lbuildall.sh (linux)
 
 There are NO other 3rd party libraries or tools required to build.
 
@@ -415,6 +417,14 @@ It is my intention to use media with copyrights or licenses that are compatible 
 
 --------------------------------------------------
 ## Some Earlier Revision History:
+
+
+**ver 2.6.2 --16dec2024**
+* All block sliders (cslid,cann,cdd) now capitalize letters that represent 1x1 blocks.
+* Block sliders cdd, cann & cslid now permit saving/restoring puzzle state using "."/":" keys.
+* Annoying-sliders cannot permit using the ijkl-keys for movement because the k-key is used to select a black colored block.
+* Updated hbox4 to hbox5.
+* Updated embedded hbox5 solver to csok.
 
 **ver 2.6.1 --26feb2024**
 * Updated [embedded+external] hbox4 with memory checks.
