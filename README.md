@@ -22,6 +22,8 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.4/as3mar25.7z
 
 
 
+Alternate Download 
+https://sourceforge.net/projects/sliderpuzzles/files/latest/download
 
 
 # SliderPuzzles with Sound
@@ -31,15 +33,17 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.4/as3mar25.7z
 
 
 
-**ver 2.6.4 --3mar2025**
+**ver 2.6.5 --17dec2025**
 
-* Updated & improved 3 solvers used within csok;
+* Updated csok:
+	* Added hbox method selection screen.
+	* Updated character handling.
+	* Updated help menu.
+	* Added v-key to show inValid box cells.
+	* Added a long-wait timer to hbox solver.
+	* Now simply skips levels that are too large.
+	* Increased maxima to match hbox: rows,cols,boxes.
 
-
-**ver 2.6.3 --01jan2025**
-
-* Updated embedded solver hbox in csok.
-* Added ">","<" keys to adjust csok-solver timeout (10-sec increments)
 
 ## More change-history at end of file
 
@@ -56,7 +60,7 @@ Featuring
 	* live solvers promote learning with less frustration
 	* no installation
 	* no dependencies (Ncurses not needed)
-	* simply unzip in your Downloads directory, or any other writeable directory, and run;
+	* simply unzip in any directory, and run;
 	* or unzip onto a USB flash drive [w/same file format] and run.
 -----------------------------------------------------------
 
@@ -70,14 +74,13 @@ Rebuildable using the free GNU Ada compiler.
 
 Includes 12 puzzle games that use ascii characters only:  rush-hour, klotski, flat7, flatAZ, sokoban, hole-in-one, hole-in-one+4, nine, dirty-dozen, panama, annoying-sliders.
 
-See the image "./puzzles.png" for a visual of some of the available puzzzles.
+See the image "./puzzles.png" for a visual of some of the available puzzles.
 
-All puzzles can be called directly from the command line; e.g.
+The puzzle selector app can be called directly from the command line; e.g.
 
-* bin\win\csok.exe	(sokoban from base dir)
-* csok.exe				(sokoban from ~\bin\win\ dir)
+* nexus.exe				(run from the ~\bin\win\ directory)
 
-but it is more convenient to use the selector app, thusly:
+but it is more convenient to use the scripts in the root-directory, thusly:
 
 * winSlide.bat			(Win64)
 * gnuSlide.sh			(linux)
@@ -97,13 +100,13 @@ EG:  "padsp (ExeName)"
 
 
 ### For Maximal Enjoyment...
-Keyboard setup can be very important for playability.  You should have a very short key-delay and fast repeat rate setting when running the arcade games. The normal settings are fine for puzzles.
+Keyboard setup can be very important for playability.  You should have a short key-delay and fast repeat rate setting.
 
 Screen setup is important, too...
 
 **Terminal size required:**
 
-	* 60x25
+	* 60x34   ...to handle the new enlarged CSOK capacity
 
 It is recommended to resize your terminal window; then enlarge the font until the window just barely fits your computer screen.
 
@@ -218,43 +221,68 @@ There are many cases the first two solvers cannot handle, but they are pretty go
 
 Three time-limited-to-10-second solvers are embedded into csok.  At any time you may press the (=)-key to see if the solver #1 can help you.  If so, you will be prompted to keep pressing that same key to proceed toward a solution.  No prompt means either the present state is unsolvable, or merely that the embedded algorithm failed.  Similarly, the (.)-key initiates solver #2; and the (,)-key initiates solver #3. These can give you a headstart toward a correct solution by limited use of this feature.  Once you think you can solve it yourself, stop using the solver and proceed manually.  This really helps when you cannot see what your next move should be.
 
-Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or more valid puzzle positions).
+Note: all 3 solvers can fail if the puzzle is difficult or too large (256 or more valid box positions).
 
 The default **timeout** used by embedded solvers is adjustable using the (>)-key or (<)-key to increment or decrement by 10 seconds per press. This is the time to wait for the internal autosolvers before giving up. The default is 10 seconds.
 
-Also, the default **method** used by embedded solver Hbox [ (.)-key ] can now be reset using a numeric (k)-key, where k is 0..5.
+The default **method** used by embedded solver Hbox can now be set using the x-key.
 
-#### 10 method options [0..9] for hbox:
+Finally, invalid box cells can be toggled using the f-key.
 
-* 0 "quickest" using 6 heuristics+inertia
-* 1 "move-efficient" +inertia
-* 2 suppress hungarian estimator (for dense puzzles)
-* 3 like 0 but single-step
-* 4 like 0 but using only 5-heuristics
 
-* 5 like 0 but using 1-heuristic (meth10)
-* 6 like 1 but using 1-heuristic (meth11)
-* 7 like 2 but using 1-heuristic (meth12)
-* 8 like 3 but using 1-heuristic (meth13)
-* 9 like 4 but using 1-heuristic (meth14)
 
-For further details see:
+### Method options for hbox:
+There are 5 basic methods, each of which has several variations,
+because hbox is currently being used as a research tool.
+See ~/docs/solmethods.txt for choices available within this app.
+See ~/docs/SolMethodsIndex.txt for an exhaustive listing for the external hbox solver.
 
-* https://sourceforge.net/projects/hbox4/			(4 is not a typo)
+Even more information can be found by studying the documents in:
+https://sourceforge.net/projects/hbox4/files/latest/download
+
 
 
 solver-key summary:
 
-* (.)		initiate hbox
-* (,)		initiate ibox
-* (=)		initiate iplr
+* (.)	initiate iplr (for small&dense puzzles)
+* (,)	initiate ibox (for medium dense puzzles)
+* (=)	initiate hbox (most capable)
 
-* (>)		increment timeout by 10 sec
-* (<)		decrement timeout by 10 sec
+* (>)	increment timeout by 10 sec
+* (<)	decrement timeout by 10 sec
 
-* (0..9)	set default solution method for Hbox
+* (x)	set solution method for Hbox
 
 
+
+movement-keys:
+
+* (up),(lf),(dn),(rt)
+* (i),(j),(k),(l)
+* (w),(a),(s),(d)
+
+other keys:
+
+* (?) help
+* (q) quit
+* (=) AutoSolve; step-by-step
+
+* (u) undo move
+* (+) next level
+* (-) previous level
+* (n) next puzzle file
+* (p) previous puzzle file
+
+* (z) save a setpoint
+* (r) reset @ setpoint
+* (o) restart puzzle
+
+* (v) show inValid box cells
+
+
+
+
+===============================================================
 
 
 ### HoleInOne/HoleInOne+4 (chio.adb/chio4.adb)
@@ -264,6 +292,7 @@ Move the red 2x2 'a' block into the center of the four L-shaped corner pieces.
 Reverse the order of the numbered blocks with assorted shapes. First version begins with blocks in order. Second begins with blocks in reverse order. Has **very slow** solver.
 
 ===============================================================
+
 ## Setup & Running:
 
 SliderPuzzles is a stand-alone application.
@@ -293,7 +322,7 @@ To launch the puzzle selector App, depending on your system, type:
 
 * winSlide.bat (win64: win10+win11)
 * macSlide.sh (OSX)
-* gnuSlide.sh (linux)  [ ognuSlide.sh works on old linux versions ]
+* gnuSlide.sh (linux)
 
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
 
@@ -419,6 +448,13 @@ It is my intention to use media with copyrights or licenses that are compatible 
 ## Some Earlier Revision History:
 
 
+**ver 2.6.4 --3mar2025**
+* Updated & improved 3 solvers used within csok;
+
+**ver 2.6.3 --01jan2025**
+* Updated embedded solver hbox in csok.
+* Added ">","<" keys to adjust csok-solver timeout (10-sec increments)
+
 **ver 2.6.2 --16dec2024**
 * All block sliders (cslid,cann,cdd) now capitalize letters that represent 1x1 blocks.
 * Block sliders cdd, cann & cslid now permit saving/restoring puzzle state using "."/":" keys.
@@ -482,5 +518,6 @@ It is my intention to use media with copyrights or licenses that are compatible 
 **ver 2.4.1 -- 16sep22**
 * Removed Win64 build.
 * Now using GNU Ada rather than defunct AdaCore compiler.
+
 
 
