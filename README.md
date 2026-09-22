@@ -19,10 +19,7 @@ https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.5/as17dec25.7z
 
 
 
-
-
-
-Alternate Download 
+Alternate Permalink:
 https://sourceforge.net/projects/sliderpuzzles/files/latest/download
 
 
@@ -31,6 +28,12 @@ https://sourceforge.net/projects/sliderpuzzles/files/latest/download
 
 ## What's new:
 
+
+
+**ver 2.6.6 --22sep2026**
+
+* Corrected csok move count after restoring setpoint. Added push count.
+* Added a linux build that runs properly on old systems.
 
 
 **ver 2.6.5 --17dec2025**
@@ -84,6 +87,7 @@ but it is more convenient to use the scripts in the root-directory, thusly:
 
 * winSlide.bat			(Win64)
 * gnuSlide.sh			(linux)
+* ognuSlide.sh			(old-linux-distros)
 * macSlide.sh			(OSX)
 
 Use the keyboard arrow keys to highlight the desired game, then press the (enter)-key.
@@ -106,7 +110,19 @@ Screen setup is important, too...
 
 **Terminal size required:**
 
-	* 60x34   ...to handle the new enlarged CSOK capacity
+* Depends on chosen puzzle type...
+* nominally 60col X 34row is Ok for most
+
+
+**CSOK Terminal Size:**
+
+* window cols: 2x#cols in puzzle
+* window rows: 8+#rows in puzzle
+
+...so for a maximum puzzle of 64cols X 64rows you would need
+a window of 128 X 72.
+
+
 
 It is recommended to resize your terminal window; then enlarge the font until the window just barely fits your computer screen.
 
@@ -150,7 +166,7 @@ In cann (AnnoyingSliders) you must type "0" to restart it, since "r" is reserved
 Extra key functions for these 3 blocksliders only:  
 
 * (.) save current CFG
-* (/) restore saved CFG
+* (:) restore saved CFG
 
 
 For those times when a solution seems impossible, the more difficult puzzle families have an AutoSolver function using the (=)-key to step closer towards the solution:  crush, cslid, cdd, and cann.  
@@ -208,7 +224,7 @@ The c9 solver is also very slow. It can take over 15 seconds.
 
 ===============================================================
 
-### sokoban (csok.adb)
+### sokoban (csok.adb)  [61cols X 34rows]
 There are now two character sets possible that are toggled with the (c)-key.
 
 Move the pusher ( <> or @ ) with the arrow keys in order to push all the boxes ( [] or $ ) onto the goals ( :: or . ) in which case they look like ( {} or asterisk ).  Various other functions available on the help screen.  Includes a very large family of puzzle files.
@@ -323,6 +339,7 @@ To launch the puzzle selector App, depending on your system, type:
 * winSlide.bat (win64: win10+win11)
 * macSlide.sh (OSX)
 * gnuSlide.sh (linux)
+* ognuSlide.sh (old-linux-distro)
 
 Note that any individual app may still be executed from the directory appropriate to your O.S.  For example, on Windows you can CD to bin\win\ and then type "csok" to run Sokoban.
 
@@ -338,6 +355,22 @@ The latest scripts have elliminated the need to use the "gnatcoll" library simpl
 
 ==========================================================================
 ## Build Instructions:
+
+------------------------------------------------------
+#### linux users note
+
+Before attempting to build these apps on linux 
+you might need to update your libraries to include
+	libopenal-dev
+so that the link-step succeeds.
+
+Use the following commands:
+
+* sudo apt-get update
+* sudo apt-get install libopenal-dev
+------------------------------------------------------
+
+
 Remember that prebuilt executables are already included. But, if you want or need to rebuild...
 
 
@@ -396,7 +429,7 @@ fastrgv@gmail.com
 
 SliderPuzzles is covered by the GNU GPL v3 as indicated in the sources:
 
- Copyright (C) 2025  <fastrgv@gmail.com>
+ Copyright (C) 2026  <fastrgv@gmail.com>
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -428,6 +461,22 @@ See also: ./sounds/licenses-sound-data.txt.
 
 It is my intention to use media with copyrights or licenses that are compatible with GPLv3. Please notify me if you believe there is an incompatibility, and it will be removed; eg a CC-by-NC license is NOT GPL compatible.
 
+
+
+
+### Boxoban Puzzle Set
+
+Boxoban is a newly added A.I. generated sokoban puzzle set.
+Using only 4 boxes, this set is trivial for even a simple BFS solver, yet can be tricky for a human solver!
+
+#### Boxoban Citation:
+
+@misc{boxobanlevels,
+author = {Arthur Guez and Mehdi Mirza and Karol Gregor and Rishabh Kabra and Sebastien Racaniere and Theophane Weber and David Raposo and Adam Santoro and Laurent Orseau and Tom Eccles and Greg Wayne and David Silver and Timothy Lillicrap and Victor Valdes},
+title = {An investigation of Model-free planning: boxoban levels},
+howpublished= {https://github.com/deepmind/boxoban-levels/},
+year = "2018"
+}
 
 
 
@@ -518,6 +567,5 @@ It is my intention to use media with copyrights or licenses that are compatible 
 **ver 2.4.1 -- 16sep22**
 * Removed Win64 build.
 * Now using GNU Ada rather than defunct AdaCore compiler.
-
 
 
