@@ -29,6 +29,11 @@ https://sourceforge.net/projects/sliderpuzzles/files/latest/download
 ## What's new:
 
 
+**ver 2.6.7 --25sep2026**
+
+* More robust csok display algorithm.
+* Proper handling of arrow-keys that now works for all builds.
+
 
 **ver 2.6.6 --22sep2026**
 
