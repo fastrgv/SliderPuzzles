@@ -2,6 +2,7 @@
 Ascii Sokoban
 
 ![screenshot](https://github.com/fastrgv/SliderPuzzles/blob/main/hio.png)
+
 Hole In One
 
 ![screenshot](https://github.com/fastrgv/SliderPuzzles/blob/main/rush.png)
