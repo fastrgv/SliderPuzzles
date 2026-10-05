@@ -1,5 +1,11 @@
+![screenshot](https://github.com/fastrgv/SliderPuzzles/blob/main/asciiSok.png)
+Ascii Sokoban
+
 ![screenshot](https://github.com/fastrgv/SliderPuzzles/blob/main/hio.png)
+Hole In One
+
 ![screenshot](https://github.com/fastrgv/SliderPuzzles/blob/main/rush.png)
+Traffic Rush
 
 ### Download all source code, resources & binaries in the following 7-zip file:
 
