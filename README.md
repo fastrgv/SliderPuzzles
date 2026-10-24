@@ -35,6 +35,12 @@ https://sourceforge.net/projects/sliderpuzzles/files/latest/download
 
 ## What's new:
 
+**ver 2.6.8 --24oct2026**
+
+* Replace csok period characters with middle-dots. Revised colors.
+* Now fits a smaller width window to allow a bigger font.
+* Improved terminal messages.
+
 
 **ver 2.6.7 --25sep2026**
 
