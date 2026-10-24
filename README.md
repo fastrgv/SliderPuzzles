@@ -10,7 +10,7 @@ Traffic Rush
 
 ### Download all source code, resources & binaries in the following 7-zip file:
 
-https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.7/asl25sep26.7z
+https://github.com/fastrgv/SliderPuzzles/releases/download/v2.6.8/asl24oct26.7z
 
 
 * On OSX, Keka works well for 7Z files. The command-line for Keka is:
